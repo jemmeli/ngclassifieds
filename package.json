@@ -18,6 +18,8 @@
   "homepage": "https://github.com/jemmeli/ngclassifieds#readme",
   "dependencies": {
     "angular": "^1.7.9",
+    "angular-animate": "^1.7.9",
+    "angular-aria": "^1.7.9",
     "angular-material": "^1.1.21",
     "mdi": "^2.2.43"
   }

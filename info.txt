@@ -7,6 +7,8 @@
 >>npm install angular
 >>npm install angular-material mdi
 >>npm install http-server -g
+>>npm install angular-animate
+>>npm install angular-aria
 >>http-server
 
 #creating controller
