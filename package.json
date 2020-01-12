@@ -1,0 +1,24 @@
+{
+  "name": "ng-classifieds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jemmeli/ngclassifieds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jemmeli/ngclassifieds/issues"
+  },
+  "homepage": "https://github.com/jemmeli/ngclassifieds#readme",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-material": "^1.1.21",
+    "mdi": "^2.2.43"
+  }
+}
