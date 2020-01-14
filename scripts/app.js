@@ -12,13 +12,20 @@ angular.module("ngClassifieds", ["ngMaterial", "ui.router"])
 	$stateProvider
 	.state('stateone', {
 		url:'/stateone',
-		template: '<h1>State one</h1>'
+		template: '<h1> {{stateone.message}} </h1>',
+		controller : 'stateOneCtrl as stateone'
 	})
 	.state('statetwo', {
 		url:'/statetwo',
 		template: '<h1>State two</h1>'
 	});
 
+})
+
+
+.controller('stateOneCtrl', function(){
+	var vm = this;
+	vm.message = "theis is my mesg";
 })
 
 
