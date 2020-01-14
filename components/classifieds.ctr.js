@@ -5,7 +5,7 @@
 
 		classifiedsFactory.getClassifieds().then(function(classifieds){
 			$scope.classifieds = classifieds.data;
-			//console.log(classifieds.data);
+			$scope.categories = getCategories($scope.classifieds);//get categories
 		});
 
 		var contact = {
@@ -13,6 +13,24 @@
 			phone : "(999) 99615 819",
 			email : "admin@admin.com"
 		}
+
+		function getCategories(classifieds){
+			var categories = [];
+			//NEW WAY
+			angular.forEach(classifieds , function(item){
+				angular.forEach(item.categories, function(category){
+					categories.push(category);
+				})
+			});
+			return _.uniq(categories);//lodash
+			//OLD WAY
+			/*
+			for (var i = 0; i < $scope.classifieds.length; i++) {
+				$scope.categories.push($scope.classifieds.categories);
+			}
+			*/
+		}
+		
 
 
 		$scope.openSidebar = function(){
