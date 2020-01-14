@@ -1,7 +1,7 @@
 (function(){
 	"use strict"
 
-	angular.module("ngClassifieds").controller("classifiedsCtrl", function($scope , $http, classifiedsFactory,$mdSidenav, $mdToast ){
+	angular.module("ngClassifieds").controller("classifiedsCtrl", function($scope , $http, classifiedsFactory,$mdSidenav, $mdToast, $mdDialog ){
 
 		classifiedsFactory.getClassifieds().then(function(classifieds){
 			$scope.classifieds = classifieds.data;
@@ -44,6 +44,25 @@
 			$scope.closeSidebar();
 			$scope.closeSidebar();
 			showToast("Edit saved!");
+			
+	    }
+
+	    $scope.deleteClassified = function(event , classified) {
+			
+
+			var confirm = $mdDialog.confirm()
+			.title("are you want to delete ?" + classified.title)
+			.targetEvent(event)
+			.ok('Yes')
+          	.cancel('No');
+
+          	//return a promise
+			$mdDialog.show(confirm).then(function(){
+				var index = $scope.classifieds.indexOf(classified);
+				$scope.classifieds.splice(index , 1);
+			}, function() {
+				//when click cancel
+			});
 			
 	    }
 

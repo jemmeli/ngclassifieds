@@ -68,7 +68,7 @@
     	</form>
     	<!-- THE FORM -->
 
-    	
+
     	</md-content>
 	</md-sidenav>
 
@@ -102,7 +102,7 @@
 					<div layout="row">
 						<md-button class="md-primary" 
 							ng-click="editClassified(classified)"> Edit </md-button> 
-						<md-button class="md-warn"> Delete </md-button> 
+						<md-button ng-click="deleteClassified($event, classified)" class="md-warn"> Delete </md-button> 
 					</div>
 				</div>
 
