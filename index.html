@@ -31,6 +31,9 @@
         </md-toolbar>
 
     	<md-content layout-padding>
+
+
+    		<!-- THE FORM -->
     		<form>
     			<md-input-container>
     				<label for="title">Title</label>
@@ -63,6 +66,9 @@
     			Cancel
     		</md-button>
     	</form>
+    	<!-- THE FORM -->
+
+    	
     	</md-content>
 	</md-sidenav>
 
@@ -94,7 +100,8 @@
 				<div class="classified-admin" ng-if="showAdmin">
 					<h3>Admin</h3>
 					<div layout="row">
-						<md-button class="md-primary"> Edit </md-button> 
+						<md-button class="md-primary" 
+							ng-click="editClassified(classified)"> Edit </md-button> 
 						<md-button class="md-warn"> Delete </md-button> 
 					</div>
 				</div>

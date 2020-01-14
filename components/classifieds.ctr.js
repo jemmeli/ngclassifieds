@@ -29,11 +29,29 @@
 				$scope.classifieds.push(classified);
 				$scope.classified = {};//clear form after save
 				$scope.closeSidebar();//close sidebar after save
-				$mdToast.show(
-					$mdToast.simple().content("Classified saved!").position('top, right').hideDelay(3000)
-				);
+				showToast("Classified saved!");
 			}
-	      }
+	    }
+
+	    $scope.editClassified = function(classified) {
+			$scope.editing = true;
+			$scope.openSidebar();
+			$scope.classified = classified;
+	    }
+
+	    $scope.saveEdit = function() {
+			$scope.editing = false;
+			$scope.closeSidebar();
+			$scope.closeSidebar();
+			showToast("Edit saved!");
+			
+	    }
+
+	    function showToast(message){
+	    	$mdToast.show(
+				$mdToast.simple().content(message).position('top, right').hideDelay(3000)
+			);
+	    }
 		
 
 		
