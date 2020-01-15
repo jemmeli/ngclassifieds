@@ -1,7 +1,7 @@
 (function(){
 	"use strict"
 
-	angular.module("ngClassifieds").controller("classifiedsController", function($scope , $http, classifiedsFactory,$mdSidenav, $mdToast, $mdDialog ){
+	angular.module("ngClassifieds").controller("classifiedsController", function($scope, $state , $http, classifiedsFactory,$mdSidenav, $mdToast, $mdDialog ){
 
 		var vm = this;
 
@@ -44,11 +44,12 @@
 
 
 		function openSidebar(){
-			$mdSidenav('left').open();
+			//$mdSidenav('left').open();
+			$state.go('classifieds.new');//navigation 
 		}
 
 		function closeSidebar(){
-			$mdSidenav('left').close();
+			$mdSidenav('left').close(); 
 		}
 
 		function saveClassified(classified) {
