@@ -20,8 +20,34 @@
 <script src="node_modules/angular-animate/angular-animate.js"></script>
 <script src="node_modules/angular-aria/angular-aria.js"></script>
 <script src="node_modules/angular-material/angular-material.js"></script>
-
 <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
+
+
+<!-- Firebase -->
+ <!-- <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>  -->
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyCpeSJ7LxCuRYUOmzxdmcj5Bqdm6dWH348",
+  authDomain: "ngclassifieds-c7a55.firebaseapp.com",
+  databaseURL: "https://ngclassifieds-c7a55.firebaseio.com",
+  projectId: "ngclassifieds-c7a55",
+  storageBucket: "ngclassifieds-c7a55.appspot.com",
+  messagingSenderId: "914268300056",
+  appId: "1:914268300056:web:2b4ff810f14db320dcb46d"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
 
 <script src="scripts/app.js"></script>
 <script src="components/classifieds/classifieds.ctr.js"></script>
@@ -30,7 +56,9 @@
 <script src="components/classifieds/new/classifieds.new.ctr.js"></script>
 <script src="components/classifieds/edit/classifieds.edit.ctr.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
+
+
+
 
 </body>
 </html>

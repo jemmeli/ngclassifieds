@@ -1,4 +1,4 @@
-angular.module("ngClassifieds", ["ngMaterial", "ui.router"])
+angular.module("ngClassifieds", ["ngMaterial", "ui.router", "firebase"])
 .config(function($mdThemingProvider, $stateProvider,$locationProvider){
 
 	$locationProvider.hashPrefix('');

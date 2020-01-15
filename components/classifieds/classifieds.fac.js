@@ -2,15 +2,13 @@
 
 	"use strict"
 
-	angular.module("ngClassifieds").factory("classifiedsFactory" , function($http){
+	angular.module("ngClassifieds").factory("classifiedsFactory" , function($http, $firebaseArray){
 
-		function getClassifieds(){
-			//the promise will handle in our controller
-			return $http.get('data/classifieds.json');
-		}
+		//var ref = new Firebase('https://ngclassifieds-c7a55.firebaseio.com/');
+		 var ref = firebase.database().ref();
 
 		return{
-			getClassifieds:getClassifieds
+			ref : $firebaseArray(ref)
 		}
 
 	});
