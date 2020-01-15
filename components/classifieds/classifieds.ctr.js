@@ -8,15 +8,13 @@
 		//capture variables
 		vm.openSidebar = openSidebar;
 		vm.closeSidebar = closeSidebar;
-		vm.editClassified = editClassified;
 		vm.saveEdit = saveEdit;
-		vm.deleteClassified = deleteClassified;
-		vm.showToast = showToast;
 		vm.saveClassified = saveClassified
 		vm.classifieds
 		vm.categories
 		vm.editing
 		vm.classified
+		vm.showToast = showToast;
 
 		vm.classifieds = classifiedsFactory.ref;//get all data from firebase
 		//to get our select filter categories we have to wait till firebase loaded
@@ -95,12 +93,7 @@
 		}
 
 
-
-		function editClassified(classified) {
-			$state.go('classifieds.edit' , { 
-				id : classified.$id , //$id the id from firebase Array
-			});
-		}
+		
 
 		function saveEdit() {
 			vm.editing = false;
@@ -110,31 +103,15 @@
 			
 		}
 
-		function deleteClassified(event , classified) {
-			
+		function showToast(message){
+	      	$mdToast.show(
+	      		$mdToast.simple().content(message).position('top, right').hideDelay(3000)
+	      	);
+	    }
 
-			var confirm = $mdDialog.confirm()
-			.title("are you want to delete ?" + classified.title)
-			.targetEvent(event)
-			.ok('Yes')
-			.cancel('No');
 
-          	//return a promise
-          	$mdDialog.show(confirm).then(function(){
-          		//deleting 
-          		vm.classifieds.$remove(classified);
-          		showToast("Classified deleted");
-          	}, function() {
-				//when click cancel
-			});
 
-          }
-
-          function showToast(message){
-          	$mdToast.show(
-          		$mdToast.simple().content(message).position('top, right').hideDelay(3000)
-          		);
-          }
+          
 
 
 
