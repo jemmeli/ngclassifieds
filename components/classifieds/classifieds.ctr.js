@@ -39,8 +39,8 @@
 		*/
 
 		$scope.$on('newClassified', function(event, classified){
-			classified.id = vm.classifieds.length + 1;//give an id
-			vm.classifieds.push(classified);
+			//dont need id because firebase provide it's own id
+			vm.classifieds.$add(classified);
 			showToast('Classified saved !');
 
 		});
