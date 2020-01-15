@@ -1,11 +1,27 @@
 (function(){
 	"use strict"
 
-	angular.module("ngClassifieds").controller("classifiedsCtrl", function($scope , $http, classifiedsFactory,$mdSidenav, $mdToast, $mdDialog ){
+	angular.module("ngClassifieds").controller("classifiedsController", function($scope , $http, classifiedsFactory,$mdSidenav, $mdToast, $mdDialog ){
+
+		var vm = this;
+
+		//vm.getCategories = getCategories;
+		vm.openSidebar = openSidebar;
+		vm.closeSidebar = closeSidebar;
+		vm.editClassified = editClassified;
+		vm.saveEdit = saveEdit;
+		vm.deleteClassified = deleteClassified;
+		vm.showToast = showToast;
+		vm.saveClassified = saveClassified
+
+		vm.classifieds
+		vm.categories
+		vm.editing
+		vm.classified
 
 		classifiedsFactory.getClassifieds().then(function(classifieds){
-			$scope.classifieds = classifieds.data;
-			$scope.categories = getCategories($scope.classifieds);//get categories
+			vm.classifieds = classifieds.data;
+			vm.categories = getCategories(vm.classifieds);//get categories
 		});
 
 		var contact = {
@@ -16,56 +32,50 @@
 
 		function getCategories(classifieds){
 			var categories = [];
-			//NEW WAY
+			//
 			angular.forEach(classifieds , function(item){
 				angular.forEach(item.categories, function(category){
 					categories.push(category);
 				})
 			});
 			return _.uniq(categories);//lodash
-			//OLD WAY
-			/*
-			for (var i = 0; i < $scope.classifieds.length; i++) {
-				$scope.categories.push($scope.classifieds.categories);
-			}
-			*/
 		}
 		
 
 
-		$scope.openSidebar = function(){
+		function openSidebar(){
 			$mdSidenav('left').open();
 		}
 
-		$scope.closeSidebar = function(){
+		function closeSidebar(){
 			$mdSidenav('left').close();
 		}
 
-		$scope.saveClassified = function(classified) {
+		function saveClassified(classified) {
 			if (classified) {
 				classified.contact = contact;
-				$scope.classifieds.push(classified);
-				$scope.classified = {};//clear form after save
-				$scope.closeSidebar();//close sidebar after save
+				vm.classifieds.push(classified);
+				vm.classified = {};//clear form after save
+				closeSidebar();//close sidebar after save
 				showToast("Classified saved!");
 			}
 	    }
 
-	    $scope.editClassified = function(classified) {
-			$scope.editing = true;
-			$scope.openSidebar();
-			$scope.classified = classified;
+	    function editClassified(classified) {
+			vm.editing = true;
+			openSidebar();
+			vm.classified = classified;
 	    }
 
-	    $scope.saveEdit = function() {
-			$scope.editing = false;
-			$scope.closeSidebar();
-			$scope.closeSidebar();
+	    function saveEdit() {
+			vm.editing = false;
+			vm.classified = {};
+			closeSidebar();
 			showToast("Edit saved!");
 			
 	    }
 
-	    $scope.deleteClassified = function(event , classified) {
+	    function deleteClassified(event , classified) {
 			
 
 			var confirm = $mdDialog.confirm()
@@ -76,8 +86,8 @@
 
           	//return a promise
 			$mdDialog.show(confirm).then(function(){
-				var index = $scope.classifieds.indexOf(classified);
-				$scope.classifieds.splice(index , 1);
+				var index = vm.classifieds.indexOf(classified);
+				vm.classifieds.splice(index , 1);
 			}, function() {
 				//when click cancel
 			});
