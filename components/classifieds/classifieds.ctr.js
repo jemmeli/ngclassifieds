@@ -30,6 +30,15 @@
 
 		});
 
+		 $scope.$on('editSaved', function(event, msg){
+	    	showToast(msg);
+	    })
+
+
+		/*
+		$scope.$broadcast('newModifiedClassified', vm.classified);
+		*/
+
 		
 
 		var contact = {
@@ -70,10 +79,10 @@
 			}
 	    }
 
+
+
 	    function editClassified(classified) {
-			vm.editing = true;
-			openSidebar();
-			vm.classified = classified;
+			$state.go('classifieds.edit' , { id : classified.id , classified:classified });
 	    }
 
 	    function saveEdit() {
