@@ -23,7 +23,12 @@
 		function closeSidebar(){
 			vm.sidenavOpen = false;
 		}
-		
+
+		vm.sendMessage = function(){
+			//emit transfer from child to to parent
+			$scope.$emit('myMessage', 'hey how are you');
+		}
+
 
 	})
 

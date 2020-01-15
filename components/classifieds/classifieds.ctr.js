@@ -24,6 +24,11 @@
 			vm.categories = getCategories(vm.classifieds);//get categories
 		});
 
+		//listening to that event 'myMessage' that reside on child controller
+		$scope.$on('myMessage', function(event, message){
+			console.log(message);
+		});
+
 		var contact = {
 			name:"najmeddine",
 			phone : "(999) 99615 819",
