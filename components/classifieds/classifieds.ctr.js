@@ -5,7 +5,7 @@
 
 		var vm = this;
 
-		//vm.getCategories = getCategories;
+		//capture variables
 		vm.openSidebar = openSidebar;
 		vm.closeSidebar = closeSidebar;
 		vm.editClassified = editClassified;
@@ -13,7 +13,6 @@
 		vm.deleteClassified = deleteClassified;
 		vm.showToast = showToast;
 		vm.saveClassified = saveClassified
-
 		vm.classifieds
 		vm.categories
 		vm.editing
@@ -24,10 +23,14 @@
 			vm.categories = getCategories(vm.classifieds);//get categories
 		});
 
-		//listening to that event 'myMessage' that reside on child controller
-		$scope.$on('myMessage', function(event, message){
-			console.log(message);
+		$scope.$on('newClassified', function(event, classified){
+			classified.id = vm.classifieds.length + 1;//give an id
+			vm.classifieds.push(classified);
+			showToast('Classified saved !');
+
 		});
+
+		
 
 		var contact = {
 			name:"najmeddine",

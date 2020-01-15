@@ -6,6 +6,7 @@
 
 		var vm = this;
 		vm.closeSidebar = closeSidebar;
+		vm.saveClassified = saveClassified;
 
 		//event loop problem in browser solving with settieout
 		$timeout(function(){
@@ -24,9 +25,19 @@
 			vm.sidenavOpen = false;
 		}
 
-		vm.sendMessage = function(){
-			//emit transfer from child to to parent
-			$scope.$emit('myMessage', 'hey how are you');
+		function saveClassified(classified){
+
+			classified.contact = {
+				name:"najmeddine",
+				phone : "(999) 99615 819",
+				email : "admin@admin.com"
+			}
+
+			if (classified) {
+				$scope.$emit('newClassified', classified);
+				vm.sidenavOpen = false;
+			}
+
 		}
 
 
