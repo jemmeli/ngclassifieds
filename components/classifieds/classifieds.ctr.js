@@ -97,7 +97,9 @@
 
 
 		function editClassified(classified) {
-			$state.go('classifieds.edit' , { id : classified.id , classified:classified });
+			$state.go('classifieds.edit' , { 
+				id : classified.$id , //$id the id from firebase Array
+			});
 		}
 
 		function saveEdit() {
@@ -119,8 +121,9 @@
 
           	//return a promise
           	$mdDialog.show(confirm).then(function(){
-          		var index = vm.classifieds.indexOf(classified);
-          		vm.classifieds.splice(index , 1);
+          		//deleting 
+          		vm.classifieds.$remove(classified);
+          		showToast("Classified deleted");
           	}, function() {
 				//when click cancel
 			});

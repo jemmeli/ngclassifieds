@@ -5,10 +5,13 @@
 	angular.module('ngClassifieds').controller('editClassifiedsCtrl', function($scope, $state , classifiedsFactory,$mdSidenav, $timeout, $mdDialog){
 
 		var vm = this;
+		//get a reference to firebase 
+		vm.classifieds = classifiedsFactory.ref;
+
 		vm.closeSidebar = closeSidebar;
 		vm.saveEdit = saveEdit;
-		//params from state
-		vm.classified = $state.params.classified;
+		//get the record from id params
+		vm.classified = vm.classifieds.$getRecord($state.params.id);
 
 		//event loop problem in browser solving with settieout
 		$timeout(function(){
@@ -34,9 +37,11 @@
 		}
 
 		function saveEdit(){
-			$scope.$emit('editSaved' , 'Edit saved!');
-			//fake the editing
-			vm.sidenavOpen = false;
+			vm.classifieds.$save(vm.classified).then(function(){
+				$scope.$emit('editSaved' , 'Edit saved!');
+				vm.sidenavOpen = false;
+			});
+			
 		}
 
 
